@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swasthik Acharya | Computer Science &amp; Engineering Undergraduate</title>
+  <meta name="description" content="Portfolio of Swasthik Acharya, a Computer Science and Engineering undergraduate interested in software development, databases, algorithms, and AI/ML.">
+  <meta name="author" content="Swasthik Acharya">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Swasthik Acharya | Computer Science &amp; Engineering Undergraduate">
+  <meta property="og:description" content="Portfolio of Swasthik Acharya, a Computer Science and Engineering undergraduate interested in software development, databases, algorithms, and AI/ML.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="profile.jpg">
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6', // Royal Blue (#3b82f6)
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+            },
+            surface: {
+              950: '#070b14', // Main deep background
+              900: '#0b1324', // Navy dark background
+              850: '#101b33', // Slightly elevated surface
+              800: '#162342', // Card background
+              750: '#1c2d52',
+              700: '#263a66', // Borders
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Accessibility: Respect Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, ::before, ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Minimal subtle background gradient */
+    body {
+      background-color: #070b14;
+      background-image: 
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, rgba(37, 99, 235, 0.05) 0%, transparent 45%);
+    }
+
+    /* Focus styling for keyboard accessibility */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid #3b82f6;
+      outline-offset: 2px;
+    }
+  </style>
+</head>
+<body class="bg-surface-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white min-h-screen">
+
+  <!-- ==================== 1. NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-surface-950/85 backdrop-blur-md border-b border-surface-700/60 transition-colors duration-200" id="navbar">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Brand / Name -->
+        <a href="#hero" class="flex items-center gap-2.5 group" aria-label="Swasthik Acharya Home">
+          <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center font-bold text-white text-sm shadow-sm">
+            SA
+          </div>
+          <span class="font-bold text-base tracking-tight text-white group-hover:text-brand-400 transition-colors">
+            Swasthik Acharya
+          </span>
+        </a>
+
+        <!-- Desktop Navigation Items -->
+        <nav class="hidden md:flex items-center space-x-1" aria-label="Main Navigation">
+          <a href="#hero" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">Home</a>
+          <a href="#about" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">About</a>
+          <a href="#education" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">Education</a>
+          <a href="#skills" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">Skills</a>
+          <a href="#projects" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">Projects</a>
+          <a href="#activities" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">Activities</a>
+          <a href="#contact" class="px-3 py-1.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-850 rounded-md transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side / Mobile Menu Toggle Button -->
+        <div class="flex items-center">
+          <button 
+            id="mobile-menu-btn" 
+            type="button" 
+            class="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-white hover:bg-surface-850 focus:outline-none focus:ring-2 focus:ring-brand-500"
+            aria-expanded="false" 
+            aria-controls="mobile-menu"
+            aria-label="Open main menu">
+            <i class="fa-solid fa-bars text-lg" id="mobile-menu-icon" aria-hidden="true"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Dropdown -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface-900 border-b border-surface-700/60 px-4 pt-2 pb-4 space-y-1">
+      <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">Home</a>
+      <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">About</a>
+      <a href="#education" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">Education</a>
+      <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">Skills</a>
+      <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">Projects</a>
+      <a href="#activities" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">Activities</a>
+      <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-white hover:bg-surface-800 transition-colors">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==================== 2. HERO SECTION ==================== -->
+    <section id="hero" class="py-16 md:py-24 border-b border-surface-700/40">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 items-center">
+          
+          <!-- Introduction (Left on Desktop, Stacked on Mobile) -->
+          <div class="md:col-span-7 order-2 md:order-1 text-center md:text-left space-y-5">
+            
+            <div class="space-y-2">
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+                Hi, I'm <span class="text-brand-500">Swasthik Acharya</span>
+              </h1>
+              
+              <h2 class="text-lg sm:text-xl font-semibold text-slate-200">
+                Computer Science &amp; Engineering Undergraduate
+              </h2>
+              
+              <p class="text-sm sm:text-base font-medium text-brand-400">
+                Interested in Software Development and AI/ML
+              </p>
+            </div>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto md:mx-0">
+              Computer Science and Engineering undergraduate with a strong foundation in programming, data structures, databases, and software development.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-wrap items-center justify-center md:justify-start gap-3 pt-2">
+              <a href="#skills" class="px-5 py-2.5 rounded-lg text-sm font-semibold bg-brand-500 hover:bg-brand-600 text-white shadow-sm transition-colors">
+                View Skills
+              </a>
+              <a href="#contact" class="px-5 py-2.5 rounded-lg text-sm font-semibold bg-surface-800 hover:bg-surface-750 text-slate-200 border border-surface-700/80 transition-colors">
+                Contact Me
+              </a>
+            </div>
+
+            <!-- Social / External Profile Links -->
+            <div class="pt-2 flex items-center justify-center md:justify-start gap-4 text-slate-400">
+              <a href="https://github.com/Swasthik-Acharya-SK" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors flex items-center gap-1.5 text-sm" aria-label="GitHub Profile">
+                <i class="fa-brands fa-github text-base"></i>
+                <span>GitHub</span>
+              </a>
+              <span class="text-surface-700">•</span>
+              <a href="https://www.linkedin.com/in/swasthik-acharya02" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition-colors flex items-center gap-1.5 text-sm" aria-label="LinkedIn Profile">
+                <i class="fa-brands fa-linkedin text-base"></i>
+                <span>LinkedIn</span>
+              </a>
+              <span class="text-surface-700">•</span>
+              <span class="text-xs text-slate-400 flex items-center gap-1">
+                <i class="fa-solid fa-location-dot text-brand-400"></i>
+                Udupi, Karnataka
+              </span>
+            </div>
+
+          </div>
+
+          <!-- Profile Image (Right on Desktop, Stacked on Mobile) -->
+          <div class="md:col-span-5 order-1 md:order-2 flex justify-center">
+            <div class="relative w-52 sm:w-64 md:w-72 aspect-square rounded-2xl overflow-hidden border-2 border-brand-500/40 shadow-xl bg-surface-900">
+              <img 
+                src="profile.jpg" 
+                alt="Swasthik Acharya" 
+                class="w-full h-full object-cover object-top"
+                loading="eager"
+              >
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== 3. ABOUT ME ==================== -->
+    <section id="about" class="py-16 border-b border-surface-700/40 bg-surface-900/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            About Me
+          </h2>
+        </div>
+
+        <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-6 sm:p-8 shadow-sm space-y-4">
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            I am a Computer Science and Engineering undergraduate pursuing my B.E. at Shri Madhwa Vadiraja Institute of Technology and Management, Bantakal, Udupi. I have a strong academic foundation in programming, data structures, databases, and core computer science subjects. I am interested in developing scalable software and exploring AI/ML solutions for real-world problems.
+          </p>
+
+          <div class="pt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300 border-t border-surface-700/60">
+            <div>
+              <span class="text-slate-400 font-medium">Institution:</span> 
+              <span class="text-white ml-1">SMVITM, Bantakal, Udupi</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-medium">Degree:</span> 
+              <span class="text-white ml-1">B.E. Computer Science &amp; Engineering</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-medium">Location:</span> 
+              <span class="text-white ml-1">Udupi, Karnataka, India</span>
+            </div>
+            <div>
+              <span class="text-slate-400 font-medium">Focus Areas:</span> 
+              <span class="text-brand-400 ml-1">Software Development &amp; AI/ML</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 4. EDUCATION ==================== -->
+    <section id="education" class="py-16 border-b border-surface-700/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Education
+          </h2>
+        </div>
+
+        <div class="space-y-5">
+          
+          <!-- 1. B.E. Computer Science and Engineering -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-6 shadow-sm hover:border-brand-500/50 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 border-b border-surface-700/50">
+              <div>
+                <h3 class="text-lg font-bold text-white">B.E. in Computer Science and Engineering</h3>
+                <p class="text-sm text-brand-400 font-medium">Shri Madhwa Vadiraja Institute of Technology and Management, Bantakal, Udupi</p>
+              </div>
+              <span class="self-start sm:self-auto px-3 py-1 rounded bg-surface-800 text-xs font-mono text-slate-300 border border-surface-700">
+                2024 – 2028
+              </span>
+            </div>
+            <div class="mt-4 flex items-center gap-2">
+              <span class="text-xs font-medium uppercase tracking-wider text-slate-400">CGPA:</span>
+              <span class="px-2.5 py-0.5 rounded bg-brand-500/10 text-brand-400 border border-brand-500/30 text-xs font-bold font-mono">
+                9.205 / 10 (till 5th semester)
+              </span>
+            </div>
+          </div>
+
+          <!-- 2. 12th (PUC / Class XII) -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-6 shadow-sm hover:border-brand-500/50 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 border-b border-surface-700/50">
+              <div>
+                <h3 class="text-lg font-bold text-white">12th (PUC / Class XII)</h3>
+                <p class="text-sm text-slate-300">S.V.H Pre University College Innanje, Udupi</p>
+                <p class="text-xs text-slate-400">Board: Karnataka School Examination and Assessment Board (KSEAB)</p>
+              </div>
+              <span class="self-start sm:self-auto px-3 py-1 rounded bg-surface-800 text-xs font-mono text-slate-300 border border-surface-700">
+                2024
+              </span>
+            </div>
+            <div class="mt-4 flex items-center gap-2">
+              <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Percentage:</span>
+              <span class="px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs font-bold font-mono">
+                97%
+              </span>
+            </div>
+          </div>
+
+          <!-- 3. 10th (SSLC / Class X) -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-6 shadow-sm hover:border-brand-500/50 transition-colors">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-3 border-b border-surface-700/50">
+              <div>
+                <h3 class="text-lg font-bold text-white">10th (SSLC / Class X)</h3>
+                <p class="text-sm text-slate-300">S.V.H Kannada Medium High School Innanje, Udupi</p>
+                <p class="text-xs text-slate-400">Board: Karnataka School Examination and Assessment Board (KSEAB)</p>
+              </div>
+              <span class="self-start sm:self-auto px-3 py-1 rounded bg-surface-800 text-xs font-mono text-slate-300 border border-surface-700">
+                2022
+              </span>
+            </div>
+            <div class="mt-4 flex items-center gap-2">
+              <span class="text-xs font-medium uppercase tracking-wider text-slate-400">Percentage:</span>
+              <span class="px-2.5 py-0.5 rounded bg-blue-500/10 text-blue-400 border border-blue-500/30 text-xs font-bold font-mono">
+                96%
+              </span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 5. TECHNICAL SKILLS ==================== -->
+    <section id="skills" class="py-16 border-b border-surface-700/40 bg-surface-900/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Technical Skills
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          <!-- Programming Languages -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 shadow-sm">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-code text-brand-500 text-xs"></i>
+              Programming Languages
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Java</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Python</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">C</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">SQL</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">C++</span>
+            </div>
+          </div>
+
+          <!-- Web / Frameworks -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 shadow-sm">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-layer-group text-brand-500 text-xs"></i>
+              Web / Frameworks
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">HTML</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">CSS</span>
+            </div>
+          </div>
+
+          <!-- Databases -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 shadow-sm">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-database text-brand-500 text-xs"></i>
+              Databases
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">MySQL</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">MongoDB</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 shadow-sm">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-wrench text-brand-500 text-xs"></i>
+              Tools
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Git</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">GitHub</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">VS Code</span>
+            </div>
+          </div>
+
+          <!-- Core Subjects -->
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 shadow-sm md:col-span-2">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-3 flex items-center gap-2">
+              <i class="fa-solid fa-graduation-cap text-brand-500 text-xs"></i>
+              Core Subjects
+            </h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Data Structures &amp; Algorithms</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Object-Oriented Programming</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Database Management Systems</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Operating Systems</span>
+              <span class="px-3 py-1.5 rounded-lg bg-surface-800 border border-surface-750 text-slate-200 text-xs font-medium">Computer Networks</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 6. PROJECTS ==================== -->
+    <section id="projects" class="py-16 border-b border-surface-700/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Projects
+          </h2>
+        </div>
+
+        <!-- Empty state placeholder (No fake projects created) -->
+        <!-- FUTURE PROJECTS CAN BE ADDED HERE -->
+        <div class="bg-surface-850/60 border border-dashed border-surface-700 rounded-xl p-10 text-center">
+          <div class="w-12 h-12 rounded-xl bg-surface-800 border border-surface-700/80 text-brand-400 flex items-center justify-center mx-auto mb-4 text-lg">
+            <i class="fa-solid fa-folder-open"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Projects Coming Soon</h3>
+          <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            Currently building my skills through coursework, learning, and hands-on practice. Projects will be added here as they are completed.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 7. LEADERSHIP & ACTIVITIES ==================== -->
+    <section id="activities" class="py-16 border-b border-surface-700/40 bg-surface-900/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Leadership &amp; Activities
+          </h2>
+        </div>
+
+        <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-6 sm:p-7 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 pb-4 border-b border-surface-700/60">
+            <div>
+              <h3 class="text-lg font-bold text-white">Newsletter Coordinator</h3>
+              <p class="text-sm text-brand-400 font-medium">ACM Student Chapter, SMVITM</p>
+            </div>
+            <span class="self-start sm:self-auto px-3 py-1 rounded bg-surface-800 text-xs font-mono text-slate-300 border border-surface-700">
+              2026
+            </span>
+          </div>
+
+          <p class="text-slate-300 text-sm mt-4 leading-relaxed">
+            Contributed to the planning, content curation, and publication of ACM newsletters highlighting technical events, workshops, and student achievements.
+          </p>
+
+          <!-- Professional Tags -->
+          <div class="flex flex-wrap gap-2 mt-5">
+            <span class="px-2.5 py-1 rounded bg-surface-800 text-slate-300 text-xs border border-surface-700">ACM</span>
+            <span class="px-2.5 py-1 rounded bg-surface-800 text-slate-300 text-xs border border-surface-700">Newsletter</span>
+            <span class="px-2.5 py-1 rounded bg-surface-800 text-slate-300 text-xs border border-surface-700">Content Curation</span>
+            <span class="px-2.5 py-1 rounded bg-surface-800 text-slate-300 text-xs border border-surface-700">Technical Events</span>
+            <span class="px-2.5 py-1 rounded bg-surface-800 text-slate-300 text-xs border border-surface-700">Student Activities</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 8. ACHIEVEMENTS ==================== -->
+    <section id="achievements" class="py-16 border-b border-surface-700/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Achievements
+          </h2>
+        </div>
+
+        <!-- Empty state placeholder (No fake achievements created) -->
+        <!-- FUTURE ACHIEVEMENTS CAN BE ADDED HERE -->
+        <div class="bg-surface-850/60 border border-dashed border-surface-700 rounded-xl p-10 text-center">
+          <div class="w-12 h-12 rounded-xl bg-surface-800 border border-surface-700/80 text-brand-400 flex items-center justify-center mx-auto mb-4 text-lg">
+            <i class="fa-solid fa-trophy"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Achievements Coming Soon</h3>
+          <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            Achievements and accomplishments will be added here as they are earned.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 9. INTERNSHIP / EXPERIENCE ==================== -->
+    <section id="experience" class="py-16 border-b border-surface-700/40 bg-surface-900/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Internship / Experience
+          </h2>
+        </div>
+
+        <!-- Empty state placeholder (No fake internships created) -->
+        <!-- FUTURE INTERNSHIPS CAN BE ADDED HERE -->
+        <div class="bg-surface-850/60 border border-dashed border-surface-700 rounded-xl p-10 text-center">
+          <div class="w-12 h-12 rounded-xl bg-surface-800 border border-surface-700/80 text-brand-400 flex items-center justify-center mx-auto mb-4 text-lg">
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-white mb-2">Experience Coming Soon</h3>
+          <p class="text-slate-400 text-xs sm:text-sm max-w-md mx-auto leading-relaxed">
+            Internships and professional experiences will be added here as opportunities are completed.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 10. HOBBIES ==================== -->
+    <section id="hobbies" class="py-16 border-b border-surface-700/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Hobbies
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 text-center shadow-sm hover:border-brand-500/40 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-surface-800 text-brand-400 flex items-center justify-center mx-auto mb-3">
+              <i class="fa-solid fa-palette text-sm"></i>
+            </div>
+            <h3 class="text-sm font-semibold text-white">Drawing</h3>
+          </div>
+
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 text-center shadow-sm hover:border-brand-500/40 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-surface-800 text-brand-400 flex items-center justify-center mx-auto mb-3">
+              <i class="fa-solid fa-seedling text-sm"></i>
+            </div>
+            <h3 class="text-sm font-semibold text-white">Planting</h3>
+          </div>
+
+          <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-5 text-center shadow-sm hover:border-brand-500/40 transition-colors">
+            <div class="w-10 h-10 rounded-lg bg-surface-800 text-brand-400 flex items-center justify-center mx-auto mb-3">
+              <i class="fa-solid fa-film text-sm"></i>
+            </div>
+            <h3 class="text-sm font-semibold text-white">Video Editing</h3>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== 11. CONTACT SECTION ==================== -->
+    <section id="contact" class="py-16 border-b border-surface-700/40 bg-surface-900/40">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-8">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-white flex items-center gap-3">
+            <span class="w-2.5 h-6 rounded bg-brand-500"></span>
+            Let's Connect
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base mt-2">
+            I'm open to learning opportunities, technical discussions, collaborations, and future internship opportunities.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+          
+          <!-- Contact Cards (Left) -->
+          <div class="md:col-span-5 space-y-3">
+            
+            <!-- Email -->
+            <a href="mailto:swasthikacharya2006@gmail.com" class="block bg-surface-850 border border-surface-700/70 rounded-xl p-4 hover:border-brand-500/60 transition-colors group">
+              <span class="text-xs uppercase font-medium text-slate-400 block mb-1">Email</span>
+              <div class="flex items-center gap-2.5 text-slate-200 group-hover:text-brand-400 transition-colors">
+                <i class="fa-regular fa-envelope text-brand-500 text-sm"></i>
+                <span class="text-xs sm:text-sm font-medium break-all">swasthikacharya2006@gmail.com</span>
+              </div>
+            </a>
+
+            <!-- Phone -->
+            <a href="tel:+919538731859" class="block bg-surface-850 border border-surface-700/70 rounded-xl p-4 hover:border-brand-500/60 transition-colors group">
+              <span class="text-xs uppercase font-medium text-slate-400 block mb-1">Phone</span>
+              <div class="flex items-center gap-2.5 text-slate-200 group-hover:text-brand-400 transition-colors">
+                <i class="fa-solid fa-phone text-brand-500 text-sm"></i>
+                <span class="text-xs sm:text-sm font-mono font-medium">+91-9538731859</span>
+              </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a href="https://www.linkedin.com/in/swasthik-acharya02" target="_blank" rel="noopener noreferrer" class="block bg-surface-850 border border-surface-700/70 rounded-xl p-4 hover:border-brand-500/60 transition-colors group">
+              <span class="text-xs uppercase font-medium text-slate-400 block mb-1">LinkedIn</span>
+              <div class="flex items-center gap-2.5 text-slate-200 group-hover:text-brand-400 transition-colors">
+                <i class="fa-brands fa-linkedin text-brand-500 text-sm"></i>
+                <span class="text-xs sm:text-sm font-medium break-all">linkedin.com/in/swasthik-acharya02</span>
+              </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/Swasthik-Acharya-SK" target="_blank" rel="noopener noreferrer" class="block bg-surface-850 border border-surface-700/70 rounded-xl p-4 hover:border-brand-500/60 transition-colors group">
+              <span class="text-xs uppercase font-medium text-slate-400 block mb-1">GitHub</span>
+              <div class="flex items-center gap-2.5 text-slate-200 group-hover:text-brand-400 transition-colors">
+                <i class="fa-brands fa-github text-brand-500 text-sm"></i>
+                <span class="text-xs sm:text-sm font-medium break-all">github.com/Swasthik-Acharya-SK</span>
+              </div>
+            </a>
+
+          </div>
+
+          <!-- Contact Form (Right) -->
+          <div class="md:col-span-7">
+            <div class="bg-surface-850 border border-surface-700/70 rounded-xl p-6 sm:p-7 shadow-sm">
+              <form id="contact-form" novalidate class="space-y-4">
+                
+                <!-- Status Banner -->
+                <div id="form-feedback" class="hidden p-3 rounded-lg text-xs font-medium" role="alert"></div>
+
+                <div>
+                  <label for="contact-name" class="block text-xs font-medium uppercase tracking-wider text-slate-300 mb-1.5">
+                    Name <span class="text-brand-400">*</span>
+                  </label>
+                  <input 
+                    type="text" 
+                    id="contact-name" 
+                    name="name" 
+                    required 
+                    placeholder="Your Name" 
+                    class="w-full px-3.5 py-2.5 rounded-lg bg-surface-800 border border-surface-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors"
+                  >
+                  <span id="name-error" class="hidden text-xs text-rose-400 mt-1">Please enter your name.</span>
+                </div>
+
+                <div>
+                  <label for="contact-email" class="block text-xs font-medium uppercase tracking-wider text-slate-300 mb-1.5">
+                    Email <span class="text-brand-400">*</span>
+                  </label>
+                  <input 
+                    type="email" 
+                    id="contact-email" 
+                    name="email" 
+                    required 
+                    placeholder="your.email@example.com" 
+                    class="w-full px-3.5 py-2.5 rounded-lg bg-surface-800 border border-surface-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors"
+                  >
+                  <span id="email-error" class="hidden text-xs text-rose-400 mt-1">Please enter a valid email address.</span>
+                </div>
+
+                <div>
+                  <label for="contact-message" class="block text-xs font-medium uppercase tracking-wider text-slate-300 mb-1.5">
+                    Message <span class="text-brand-400">*</span>
+                  </label>
+                  <textarea 
+                    id="contact-message" 
+                    name="message" 
+                    rows="4" 
+                    required 
+                    placeholder="Your message here..." 
+                    class="w-full px-3.5 py-2.5 rounded-lg bg-surface-800 border border-surface-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-brand-500 transition-colors resize-none"
+                  ></textarea>
+                  <span id="message-error" class="hidden text-xs text-rose-400 mt-1">Please enter your message.</span>
+                </div>
+
+                <button 
+                  type="submit" 
+                  class="w-full py-2.5 px-4 rounded-lg text-sm font-semibold bg-brand-500 hover:bg-brand-600 text-white transition-colors flex items-center justify-center gap-2">
+                  <span>Send Message</span>
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ==================== 12. FOOTER ==================== -->
+  <footer class="py-8 bg-surface-950 border-t border-surface-700/40 text-center">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
+      
+      <!-- Footer Navigation / Social Icons -->
+      <div class="flex items-center justify-center gap-6 text-slate-400 text-base">
+        <a href="https://www.linkedin.com/in/swasthik-acharya02" target="_blank" rel="noopener noreferrer" class="hover:text-brand-400 transition-colors" aria-label="LinkedIn">
+          <i class="fa-brands fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/Swasthik-Acharya-SK" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" aria-label="GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="mailto:swasthikacharya2006@gmail.com" class="hover:text-brand-400 transition-colors" aria-label="Email">
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        Designed &amp; Built by Swasthik Acharya &copy; 2026
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- ==================== VANILLA JAVASCRIPT ==================== -->
+  <script>
+    // 1. Mobile Menu Functionality
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    function toggleMobileMenu() {
+      const isExpanded = mobileMenuBtn.getAttribute('aria-expanded') === 'true';
+      mobileMenuBtn.setAttribute('aria-expanded', !isExpanded);
+      mobileMenu.classList.toggle('hidden');
+
+      if (!isExpanded) {
+        mobileMenuIcon.classList.remove('fa-bars');
+        mobileMenuIcon.classList.add('fa-xmark');
+      } else {
+        mobileMenuIcon.classList.remove('fa-xmark');
+        mobileMenuIcon.classList.add('fa-bars');
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu when any navigation link is clicked
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (!mobileMenu.classList.contains('hidden')) {
+          toggleMobileMenu();
+        }
+      });
+    });
+
+    // 2. Client-side Form Validation
+    const contactForm = document.getElementById('contact-form');
+    const nameInput = document.getElementById('contact-name');
+    const emailInput = document.getElementById('contact-email');
+    const messageInput = document.getElementById('contact-message');
+
+    const nameError = document.getElementById('name-error');
+    const emailError = document.getElementById('email-error');
+    const messageError = document.getElementById('message-error');
+    const formFeedback = document.getElementById('form-feedback');
+
+    function validateEmail(email) {
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return re.test(String(email).toLowerCase());
+    }
+
+    contactForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      let isValid = true;
+
+      // Validate Name
+      if (!nameInput.value.trim()) {
+        nameError.classList.remove('hidden');
+        nameInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        nameError.classList.add('hidden');
+        nameInput.classList.remove('border-rose-500');
+      }
+
+      // Validate Email
+      if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+        emailError.classList.remove('hidden');
+        emailInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        emailError.classList.add('hidden');
+        emailInput.classList.remove('border-rose-500');
+      }
+
+      // Validate Message
+      if (!messageInput.value.trim()) {
+        messageError.classList.remove('hidden');
+        messageInput.classList.add('border-rose-500');
+        isValid = false;
+      } else {
+        messageError.classList.add('hidden');
+        messageInput.classList.remove('border-rose-500');
+      }
+
+      if (isValid) {
+        // Success state: Show feedback message and reset form
+        formFeedback.textContent = "Thank you! Your message has been received.";
+        formFeedback.className = "p-3 rounded-lg text-xs font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/30";
+        formFeedback.classList.remove('hidden');
+
+        contactForm.reset();
+
+        // Clear feedback after 6 seconds
+        setTimeout(() => {
+          formFeedback.classList.add('hidden');
+        }, 6000);
+      }
+    });
+
+    // Real-time input error clearance
+    [nameInput, emailInput, messageInput].forEach(input => {
+      input.addEventListener('input', () => {
+        input.classList.remove('border-rose-500');
+        if (input === nameInput) nameError.classList.add('hidden');
+        if (input === emailInput) emailError.classList.add('hidden');
+        if (input === messageInput) messageError.classList.add('hidden');
+      });
+    });
+  </script>
+</body>
+</html>
