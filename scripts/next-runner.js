@@ -21,6 +21,11 @@ const child = spawn(process.execPath, [nextBin, ...args], {
   env: process.env,
 });
 
+child.on('error', (err) => {
+  console.error('Failed to start Next.js process:', err);
+  process.exit(1);
+});
+
 child.on('close', (code) => {
   process.exit(code ?? 0);
 });
