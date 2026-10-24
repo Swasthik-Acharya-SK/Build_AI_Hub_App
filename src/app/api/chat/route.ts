@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
     const rawIp =
       req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
       req.headers.get('x-real-ip') ||
-      req.ip ||
+      (req as unknown as { ip?: string }).ip ||
       'anonymous-client';
     const clientIp = rawIp.replace(/[^a-zA-Z0-9_.:-]/g, '').slice(0, 64) || 'anonymous-client';
 

@@ -1,6 +1,6 @@
 # 🚀 All-in-One AI Hub
 
-A production-grade, unified multi-model AI dashboard and comparison arena built with Next.js 14 App Router, TypeScript, Tailwind CSS, and official provider SDKs.
+A production-grade, unified multi-model AI dashboard and comparison arena built with Next.js 15 App Router, TypeScript, Tailwind CSS, and official provider SDKs.
 
 Seamlessly switch between, stream from, and compare **OpenAI** (ChatGPT 4o, 4o-mini, o3-mini), **Anthropic** (Claude 3.5 Sonnet, 3.5 Haiku, Opus), and **Google Gemini** (Gemini 1.5 Pro, 1.5 Flash, 2.0 Flash) from a single intuitive interface.
 
@@ -17,6 +17,7 @@ Seamlessly switch between, stream from, and compare **OpenAI** (ChatGPT 4o, 4o-m
   - Per-slot retry without re-querying successful models.
   - Dual export: download benchmark comparisons as clean GitHub Markdown or structured JSON with full metrics.
 - **Enterprise-Grade Security Architecture**:
+  - **Zero Known Vulnerabilities**: 100% clean `npm audit` (`0 vulnerabilities`) powered by Next.js 15.5.28 and hardened PostCSS overrides.
   - **Zero Client-Side Key Exposure**: API keys are strictly read server-side via environment variables (`OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, `GEMINI_API_KEY`).
   - **Token Redaction**: Automatic regex scrubbing of key signatures (`sk-proj`, `sk-ant`, `AIza`) from error responses to prevent credential leaks.
   - **Sliding-Window Rate Limiter**: Built-in in-memory rate limiting with standard `X-RateLimit-*` and `Retry-After` headers.
@@ -31,6 +32,9 @@ Seamlessly switch between, stream from, and compare **OpenAI** (ChatGPT 4o, 4o-m
   - Includes full PostgreSQL migration script (`src/lib/storage/supabase.ts`) with Row Level Security (RLS) policies for multi-device sync and user authentication.
 - **Offline / Mock Mode**:
   - Built-in realistic streaming mock engine for demonstration, automated testing, and development without active API keys.
+- **Universal Cross-Platform Build Pipeline**:
+  - High-performance compilation on Linux/macOS cloud targets via native SWC.
+  - Native WebAssembly SWC compiler fallback (`@next/swc-wasm-nodejs`) for restricted Windows workstations enforcing Windows Defender Application Control (WDAC).
 
 ---
 
@@ -117,14 +121,17 @@ The test suite covers unit formatting, provider payloads, boundary validators, s
 # 1. Run unit & integration test suites (31 tests across 4 suites)
 npm test
 
-# 2. Run Playwright browser E2E test suite (8 tests covering Chrome, mobile viewports & flows)
+# 2. Run Playwright browser E2E test suite (9 tests covering Chrome, mobile viewports & visual capture)
 npm run test:e2e
-
+ 
 # 3. Run ESLint code quality checks
 npm run lint
 
 # 4. Run TypeScript strict type verification
 npx tsc --noEmit
+
+# 5. Run dependency vulnerability audit
+npm audit
 ```
 
 ### Test Coverage Highlights:
@@ -133,7 +140,7 @@ npx tsc --noEmit
   - **Provider Adapters** (`tests/providers.test.mjs`): Claude payload formatting (top-level system, turn merging), Gemini format (`model` role conversion), multi-model Compare Arena failure isolation.
   - **Persistence & Search** (`tests/phase4-storage.test.mjs`): Message deep search, tag queries, 10MB import cap, corrupted JSON rejection, schema auto-repair.
   - **Security Audit** (`tests/phase5-security.test.mjs`): Sliding-window rate limiter enforcement, prompt overflow protection (>50,000 chars), conversation turn limits (>100 turns), and API key string redaction across error handlers.
-- **Browser E2E Tests (8 Passing in Playwright)** (`e2e/hub.spec.ts`):
+- **Browser E2E Tests (9 Passing in Playwright)** (`e2e/hub.spec.ts`):
   - Page load, header controls, dark theme rendering.
   - Streaming mock chat workflow.
   - Generation cancellation (`Stop`) and retry triggers.
@@ -142,6 +149,7 @@ npx tsc --noEmit
   - Settings modal with 3 configuration tabs.
   - Mobile responsiveness across 320px, 375px (mobile drawer with backdrop blur), and 768px tablet viewports.
   - Keyboard navigation and focus accessibility.
+  - Visual evidence capture (`public/screenshots/`: desktop, compare arena, tablet, mobile, drawer).
 
 ---
 

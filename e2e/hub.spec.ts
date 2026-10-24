@@ -186,4 +186,36 @@ test.describe('All-in-One AI Hub E2E Suite', () => {
     await promptInput.focus();
     await expect(promptInput).toBeFocused();
   });
+
+  test('9. Visual evidence capture (Desktop, Tablet, Mobile)', async ({ page }) => {
+    // 1. Desktop View (1280x800)
+    await page.setViewportSize({ width: 1280, height: 800 });
+    await page.goto('/');
+    await expect(page.locator('header')).toBeVisible();
+    await page.screenshot({ path: 'public/screenshots/desktop-hub.png', fullPage: true });
+
+    // Compare Arena View
+    await page.getByRole('button', { name: /Compare Arena/i }).click();
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: 'public/screenshots/desktop-compare.png', fullPage: true });
+
+    // Tablet View (768x1024)
+    await page.setViewportSize({ width: 768, height: 1024 });
+    await page.getByRole('button', { name: 'Chat', exact: true }).click();
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: 'public/screenshots/tablet-hub.png' });
+
+    // Mobile View (375x667)
+    await page.setViewportSize({ width: 375, height: 667 });
+    await page.waitForTimeout(400);
+    await page.screenshot({ path: 'public/screenshots/mobile-hub.png' });
+
+    // Mobile Drawer
+    const mobileMenuBtn = page.getByRole('button', { name: /Toggle navigation menu/i });
+    if (await mobileMenuBtn.isVisible()) {
+      await mobileMenuBtn.click();
+      await page.waitForTimeout(400);
+      await page.screenshot({ path: 'public/screenshots/mobile-drawer.png' });
+    }
+  });
 });
